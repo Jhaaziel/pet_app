@@ -1,33 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:pet_app/drawerScreen.dart';
+import 'package:pet_app/homeScreen.dart';
 
 void main() async {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: MyApp(),
+        body:MyApp(),
       ),
     ),
   );
 }
 
+class HomePage extends StatelessWidget {  //De outro bloco
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          DrawerScreen(),
+          HomeScreen(),
+        ],
+      )
+      
+    );
+  }
+}
+
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: Container(
         padding: EdgeInsets.only(
           top: 60,
           left: 40,
           right: 40,
         ),
-        color: Colors.white,
+        
         child: ListView(
           children: <Widget>[
             SizedBox(
               width: 128,
               height: 128,
-              child: Image.asset("assets/images/logo.png"),
+              child: Image.asset("assets/imagens/logo.png"),
             ),
             SizedBox(
               height: 20,
@@ -94,6 +113,9 @@ class MyApp extends StatelessWidget {
               ),
               child: SizedBox.expand(
                 child: FlatButton(
+                  onPressed: () { 
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()) );
+                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -108,7 +130,7 @@ class MyApp extends StatelessWidget {
                       ),
                       Container(
                         child: SizedBox(
-                          child: Image.asset("assets/images/bone.png"),
+                          child: Image.asset("assets/imagens/bone.png"),
                           height: 28,
                           width: 28,
                         ),
@@ -132,6 +154,7 @@ class MyApp extends StatelessWidget {
               ),
               child: SizedBox.expand(
                 child: FlatButton(
+                  onPressed: () {  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -145,7 +168,7 @@ class MyApp extends StatelessWidget {
                         textAlign: TextAlign.left,
                       ),
                       Container(
-                        child: Image.asset("assets/images/fb-icon.png"),
+                        child: Image.asset("assets/imagens/fb-icon.png"),
                         height: 28,
                         width: 28,
                       ),
