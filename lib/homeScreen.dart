@@ -10,21 +10,25 @@ class HomeScreen extends StatefulWidget {
 
 
 
- double x0ffset=0;
- double  y0ffset=0;
- double scaleFactor=0;
 
 
 
 class _HomeScreenState extends State<HomeScreen> {
+
+
+double xOffset = 0;  // alterna entre screns
+double yOffset = 0;
+double scaleFactor = 1;
+
+bool isDrawerOpen = false;
+
   @override
  
  Widget build(BuildContext context) {
    return AnimatedContainer(
 
-     transform: Matrix4.translationValues(xOffset, yOffset, 0)..scale(scaleFactor),
-
-
+     transform: Matrix4.translationValues(xOffset, yOffset, 0)
+     ..scale(scaleFactor),
      duration: Duration(milliseconds: 250),
      color: Colors.white,
      child: Column(
@@ -39,15 +43,32 @@ SizedBox(height: 50,),
 
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children:[
-               IconButton(icon: Icon(Icons.menu), onPressed: (){
+               isDrawerOpen?IconButton(
+                 icon: Icon(Icons.arrow_back_ios),
+                 onPressed: () {
+                   setState(() {
+                     xOffset=0;
+                     yOffset=0;
+                     scaleFactor=1;
+                     isDrawerOpen=false;
+                   });
+                 },
 
 
-
+               ):
+               IconButton(
+                 icon: Icon(Icons.menu),
+                  onPressed: (){
                  setState(() {
                    xOffset =230;
                    yOffset=150;
                    scaleFactor=0.6;
+                   isDrawerOpen=true;
                  });
+
+
+
+                 
 
                }),
              Column(
@@ -66,6 +87,12 @@ SizedBox(height: 50,),
          ),
          CircleAvatar()
        ],),
+
+
+
+       
+
+
 
 
    );
