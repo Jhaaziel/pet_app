@@ -105,31 +105,50 @@ SizedBox(height: 50,),
              ),
            ),
 
-           Container(height:120,
-           child: ListView.builder(
+           SingleChildScrollView(
              scrollDirection: Axis.horizontal,
-             itemCount: categories.length,
-             itemBuilder: (context,index){
-               return Container(
-                 child: Column(
-                   children: [
-                     Container(
+                        child: Container(height:120,
+             child: ListView.builder(
+               shrinkWrap: true,
+               scrollDirection: Axis.horizontal,
+               itemCount: categories.length,
+               itemBuilder: (context,index){
+                 return Container(
+                   child: Container(
 
-                       height: 50,
-                       width:50,
+                     height: 50,
+                     width:50,
+                     padding: EdgeInsets.all(10),
 
-                       child:Image.asset(categories[index]["IconPath"]),
-                     );
-                   ],
-                ),
+                     decoration: BoxDecoration(
+                       color: Colors.white,
+                       boxShadow: shadowList
+                     ),
+
+                     child:Column(
+                       children: [
+                         
+                         Image.asset('assets/'+categories[index]["iconPath"]),
+                         
+                       ],
+                     ),
+                   )
 
 
-               
-              };
-               ),
-           ),
-          
-          )   
+                 
+                 );
+
+               }
+             )
+             ),
+           )
+
+       ]
+     ));
+
+ }     
+             
+ 
           
    
 
@@ -138,6 +157,6 @@ SizedBox(height: 50,),
 
       
 
-   
- }
+       
+ 
 }
