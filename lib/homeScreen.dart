@@ -10,9 +10,6 @@ class HomeScreen extends StatefulWidget {
 
 
 
-
-
-
 class _HomeScreenState extends State<HomeScreen> {
 
 
@@ -30,7 +27,7 @@ bool isDrawerOpen = false;
      transform: Matrix4.translationValues(xOffset, yOffset, 0)
      ..scale(scaleFactor),
      duration: Duration(milliseconds: 250),
-     color: Colors.white,
+     color: Colors.grey[200],
      child: Column(
        children: [
 
@@ -81,20 +78,66 @@ SizedBox(height: 50,),
                    ],
                  )
               
-               ],)
+               ],
+               
+               )
+                        
              ],
            ),
          ),
-         CircleAvatar()
-       ],),
 
 
+           Container(
+             padding: EdgeInsets.symmetric(horizontal:20,vertical:10),
+             margin: EdgeInsets.symmetric(vertical:30),
+             decoration: BoxDecoration(
+               color: Colors.white,
+               borderRadius: BorderRadius.circular(20),
+             ),// alinhamento do Padding
+             child: Row(
+               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               children: [
+                 Icon(Icons.search),
+                 Text("Search pet to adopt"),
+                 Icon(Icons.settings),
+               ],
+               
+             ),
+           ),
 
-       
+           Container(height:120,
+           child: ListView.builder(
+             scrollDirection: Axis.horizontal,
+             itemCount: categories.length,
+             itemBuilder: (context,index){
+               return Container(
+                 child: Column(
+                   children: [
+                     Container(
+
+                       height: 50,
+                       width:50,
+
+                       child:Image.asset(categories[index]["IconPath"]),
+                     );
+                   ],
+                ),
 
 
+               
+              };
+               ),
+           ),
+          
+          )   
+          
+   
+
+   
 
 
-   );
+      
+
+   
  }
 }
